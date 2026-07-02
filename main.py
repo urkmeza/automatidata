@@ -18,7 +18,7 @@ print("Transaction Distribution by Payment Type:")
 print(df['payment_type'].value_counts())
 print("-" * 55)
 
-# Filter for Credit Card and Cash trips (Done only ONCE)
+# Filter for Credit Card and Cash trips
 credit_card_trips = df[df['payment_type'] == 1]
 cash_trips = df[df['payment_type'] == 2]
 
@@ -34,8 +34,7 @@ avg_tip_by_passenger = credit_card_trips.groupby('passenger_count')['tip_amount'
 print(avg_tip_by_passenger.apply(lambda x: f"${x:.2f}"))
 print("-" * 55)
 
-# 5. Fixing the Missing Vendor Analysis
-# The original code had missing variables; usually, the column is 'VendorID'
+# 5. Vendor Analysis
 if 'VendorID' in df.columns:
     print("Trip Counts by Vendor:")
     vendor_counts = df['VendorID'].value_counts()
